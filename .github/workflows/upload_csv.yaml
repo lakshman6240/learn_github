@@ -17,9 +17,10 @@ jobs:
       - name: Log in to Azure using SPN
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+          clientId: ${{ secrets.AZURE_CLIENT_ID }}
+          tenantId: ${{ secrets.AZURE_TENANT_ID }}
+          clientSecret: ${{ secrets.AZURE_CLIENT_SECRET }}
+          subscriptionId: '35973042-831e-4e87-8cae-c4cc21bb3ede'
 
       - name: Upload CSV files to Azure Blob Storage
         env:
