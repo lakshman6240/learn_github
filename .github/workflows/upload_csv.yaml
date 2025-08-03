@@ -17,14 +17,11 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Upload CSV files to Azure Blob Storage
-        env:
-          AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
-          CONTAINER_NAME: ${{ secrets.CONTAINER_NAME }}
         run: |
           for file in $(find . -name "*.csv"); do
             az storage blob upload \
-              --account-name "$AZURE_STORAGE_ACCOUNT" \
-              --container-name "$CONTAINER_NAME" \
+              --account-name "storage0803" \
+              --container-name "root" \
               --file "$file" \
               --name "$(basename "$file")" \
               --auth-mode login \
