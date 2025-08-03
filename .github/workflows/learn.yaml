@@ -26,3 +26,6 @@ jobs:
             echo "$access_token"
             echo "::add-mask::$access_token"
             echo "access_token=$access_token" >> $GITHUB_OUTPUT
+
+      - name: print token
+        run: echo $access_token
