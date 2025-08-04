@@ -28,6 +28,7 @@ jobs:
   STAGE:
     runs-on: ubuntu-latest
     needs: DEV
+    environment: stage
     steps:
       - name: test
         run: echo "stage"
