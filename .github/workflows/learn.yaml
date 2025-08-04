@@ -14,18 +14,13 @@ jobs:
       - name: Install databricks cli
         run: pip install databricks-cli
 
-      - name: Get token
-        run: |
-            response=$(curl -s -X POST "https://login.microsoftonline.com/9a8cd433-6113-49e5-aa7f-42788a01a246/oauth2/token" \
-            -F grant_type=client_credentials \
-            -F client_id="8d7e7b20-d0d0-48ae-af7b-73ab6e1b8f5b" \
-            -F client_secret=".oh8Q~aOlsaJvixJ8.enkWU-C300j7yyYARgndlc" \
-            -F resource="2ff814a6-3304-4ab8-85cb-cd0e6f879c1d") 
-            
-            access_token=$(echo "$response" | jq -r '.access_token')
-            echo "$access_token"
-            echo "::add-mask::$access_token"
-            echo "access_token=$access_token" >> $GITHUB_OUTPUT
-
-      - name: print token
-        run: echo $access_token
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          # Artifact name
+          name: drop # optional, default is artifact
+          # A file, directory or wildcard pattern that describes what to upload
+          path: /drop
+          # The desired behavior if no files are found using the provided path.
+      
+          
